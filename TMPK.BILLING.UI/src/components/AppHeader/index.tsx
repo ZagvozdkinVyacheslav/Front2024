@@ -1,12 +1,5 @@
+import {Flex, Image} from "@mantine/core";
 
-
-// const {Header} = Layout;
-
-// type AppHeaderProps = {
-//     auth: AuthContextProps;
-//     currentUser?: IUserIs;
-// }
-// {currentUser, auth}: AppHeaderProps
 const AppHeader = () => {
     // const menu = [
     //     // {id: 'Мониторинг', icon: <PieChartOutlined/>, link: LinkTo.MONITORING()},
@@ -21,39 +14,52 @@ const AppHeader = () => {
     //     // {id: 'Пользователи ИС', icon: <UserOutlined/>, link: LinkTo.SECURITY(), access: roles.ADMIN.id},
     // ]
 
-    return <div style={{display: 'flex', alignItems: 'center', justifyContent: "space-between"}}>
-        <div style={{fontSize: 16, fontWeight: 'bold', textAlign: 'center', lineHeight: "normal", marginRight: 15, width: '100%'}}>ТМПК Биллинг
+    return (
+        <div style={{
+            fontSize: 16,
+            lineHeight: "1.5",
+            width: '100%',
+        }}>
+            <Flex
+                style={{
+                    display: 'flex',
+                    padding: 10,
+                    paddingRight: 15,
+                    paddingLeft: 15,
+                    boxSizing: 'border-box',
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                    maxWidth: 1300
+                }}>
+                <Image src={'../../../logo/logo_header.svg'} style={{width: 98, display: 'flex'}}/>
+                {/*<Flex>Биллинг</Flex>*/}
+            </Flex>
+            <Flex style={{position: 'relative'}}>
+                <div style={{
+                    height: 25,
+                    width: '100%',
+                    paddingLeft: 15,
+                    marginRight: 'auto',
+                    marginLeft: 'auto',
+                    justifyContent: 'flex-end',
+                    display: 'flex',
+                    backgroundColor: '#3c5df5',
+                }}>
+                    <div style={{
+                        display: 'flex',
+                        fontFamily: 'Gilroy, sans-serif',
+                        height: '100%',
+                        fontSize: '18px',
+                        maxWidth: 1300,
+                        textTransform: 'uppercase'
+                    }}>
+                        <span style={{color: '#f4b940'}}>#время</span>
+                        <span style={{backgroundColor: '#f4b940', color: '#3c5df5', paddingRight: 300}}>цифры</span>
+                    </div>
+                </div>
+            </Flex>
         </div>
-        {/*<div style={{left: 0, width: "calc(100vw - 200px)"}}>*/}
-        {/*    <Menu*/}
-        {/*        theme="dark"*/}
-        {/*        mode="horizontal"*/}
-        {/*        selectedKeys={[menu.find(it => location.pathname.includes(it.link))?.link!!]}*/}
-        {/*        items={menu.filter(it => (it.access && currentUser?.roleId === it.access) || !it.access).map(it => ({*/}
-        {/*            key: it.link,*/}
-        {/*            label: <Link to={it.link}>{it.id}</Link>,*/}
-        {/*            icon: it.icon*/}
-        {/*        }))}*/}
-        {/*    />*/}
-        {/*</div>*/}
-        {/*<Space>*/}
-        {/*    <Dropdown.Button*/}
-        {/*        type="primary"*/}
-        {/*        icon={<UserOutlined/>}*/}
-        {/*        menu={{*/}
-        {/*            items: [*/}
-        {/*                {*/}
-        {/*                    key: "exit",*/}
-        {/*                    label: <Button type="link" onClick={() => {*/}
-        {/*                        auth.signoutSilent()*/}
-        {/*                    }}>Выйти</Button>*/}
-        {/*                }*/}
-        {/*            ]*/}
-        {/*        }} placement="bottomRight">*/}
-        {/*        {auth.user?.profile.preferred_username}*/}
-        {/*    </Dropdown.Button>*/}
-        {/*</Space>*/}
-    </div>
+    )
 }
 
 export default AppHeader;

@@ -25,15 +25,15 @@ export const routes = [
                     }
                 ],
             },
+            {
+                path: "*",
+                element: <NotFound/>
+            },
+            {
+                path: LinkTo.ACCESS_DENIED(),
+                element: <AccessDenied/>
+            },
         ]
-    },
-    {
-        path: LinkTo.ACCESS_DENIED(),
-        element: <AccessDenied/>
-    },
-    {
-        path: "*",
-        element: <NotFound/>
     },
 ]
 

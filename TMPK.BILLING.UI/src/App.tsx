@@ -1,21 +1,17 @@
 import AppHeader from "./components/AppHeader";
-import {AppShell, Group} from "@mantine/core";
+import {AppShell} from "@mantine/core";
 import {Route, Routes} from "react-router-dom";
 import {routes} from "./config/routes.tsx";
+import AppFooter from "./components/AppFooter";
 
 function App() {
 
     return (
-        <AppShell
-            header={{ height: 60 }}
-            footer={{ height: 60 }}
-        >
-            <AppShell.Header>
-                <Group h="100%" px="md">
-                    <AppHeader/>
-                </Group>
+        <AppShell padding="md" style={{fontFamily: 'Gilroy, sans-serif, inherit', display: 'flex', minHeight: '100hv'}}>
+            <AppShell.Header style={{ width: '100%'}}>
+                <AppHeader/>
             </AppShell.Header>
-            <AppShell.Main style={{padding: '50px 50px'}}>
+            <AppShell.Main style={{ width: '100%', padding: '60px 50px'}}>
                 <Routes>
                     {
                         routes.find(it => it.path === '/')?.children?.map((route) => {
@@ -26,12 +22,11 @@ function App() {
                     }
                 </Routes>
             </AppShell.Main>
-            <AppShell.Footer
-                style={{textAlign: 'center'}}>©ТМПК {new Date().getFullYear()}
+            <AppShell.Footer style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                <AppFooter/>
             </AppShell.Footer>
         </AppShell>
-    )
-        ;
+    );
 }
 
 export default App
