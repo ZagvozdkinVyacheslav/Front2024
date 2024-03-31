@@ -7,7 +7,7 @@ import AppFooter from "./components/AppFooter";
 function App() {
 
     return (
-        <AppShell padding="md" style={{fontFamily: 'Gilroy, sans-serif, inherit', display: 'flex', minHeight: '100hv'}}>
+        <AppShell padding="md" footer={{ height: 60 }} style={{fontFamily: 'Gilroy, sans-serif, inherit', display: 'flex', minHeight: '100hv'}}>
             <AppShell.Header style={{ width: '100%'}}>
                 <AppHeader/>
             </AppShell.Header>

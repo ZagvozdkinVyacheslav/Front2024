@@ -1,7 +1,21 @@
 import {useForm} from "@mantine/form";
 import {Button, Container, Input, PasswordInput} from "@mantine/core";
+import {AuthService, logIn, useCurrentUser} from "../../service/AuthService.ts";
+import {useEffect, useState} from "react";
+import {OperatorServiceApi} from "../../service/OperatorService.ts";
 
 const Authorization = () => {
+    const [user, setUser] = useState();
+
+    useEffect(() => {
+        OperatorServiceApi.getById(new AuthService().getOperatorId() ?? '', new AuthService().getOperatorId() ?? '')
+            .then(value => {
+                if (value) {
+                    setUser(user)
+                }
+            })
+    }, [])
+
     const form = useForm({
         initialValues: {
             login: '',
@@ -12,16 +26,21 @@ const Authorization = () => {
         },
     });
     return (
-        <form style={{
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            position: 'relative',
-            gap: 15,
-        }} onSubmit={form.onSubmit((values) => console.log(values))}>
+        <form
+            style={{
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                position: 'relative',
+                gap: 15,
+            }}
+            onSubmit={
+                form.onSubmit((values) => logIn(values.login, values.password))
+            }
+        >
             <Container miw={400}>
                 <Input
                     radius={'md'}
