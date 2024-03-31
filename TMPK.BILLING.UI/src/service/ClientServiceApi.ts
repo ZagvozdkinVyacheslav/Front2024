@@ -13,9 +13,9 @@ export interface IClient {
 
 export interface IClientInfo {
     id: number,
-    lastName: string,
-    firstName: string,
-    middleName: string,
+    lastname: string,
+    firstname: string,
+    middlename: string,
     organisationName: string,
     phoneNumber: string,
     birthDate: string,

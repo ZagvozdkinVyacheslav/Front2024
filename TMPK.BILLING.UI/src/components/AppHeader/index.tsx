@@ -32,7 +32,7 @@ const AppHeader = (props: {
                     <>
                             <Button
                                 radius="md"
-                                size={'lg'}
+                                size={'md'}
                                 style={{
                                     backgroundColor: '#f4b940',
                                     fontWeight: 400
