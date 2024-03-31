@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@mantine/core": "^7.7.1",
+    "@mantine/form": "^7.7.1",
     "@mantine/hooks": "^7.7.1",
     "@mantine/notifications": "^7.7.1",
     "@mantine/tiptap": "^7.7.1",
