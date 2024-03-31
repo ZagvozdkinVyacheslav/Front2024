@@ -1,24 +1,19 @@
-import {Flex, Image} from "@mantine/core";
+import {Button, Flex, Image} from "@mantine/core";
+import {IOperator} from "../../service/OperatorService.ts";
+import {logOut} from "../../service/AuthService.ts";
+import {LinkTo} from "../../config/links.ts";
+import {useNavigate} from "react-router-dom";
 
-const AppHeader = () => {
-    // const menu = [
-    //     // {id: 'Мониторинг', icon: <PieChartOutlined/>, link: LinkTo.MONITORING()},
-    //     // {id: 'Журнал запросов', icon: <HistoryOutlined/>, link: LinkTo.REQUEST_JOURNAL()},
-    //     // {id: 'Рег. запросы', icon: <FileSearchOutlined/>, link: LinkTo.REG_QUERY()},
-    //     // {
-    //     //     id: 'Витрины',
-    //     //     icon: <DatabaseOutlined/>,
-    //     //     link: LinkTo.VITRINAS()
-    //     // },
-    //     // {id: 'Потребители РЗ', icon: <UserOutlined/>, link: LinkTo.USERS()},
-    //     // {id: 'Пользователи ИС', icon: <UserOutlined/>, link: LinkTo.SECURITY(), access: roles.ADMIN.id},
-    // ]
-
+const AppHeader = (props: {
+    user: IOperator | undefined | null
+}) => {
+    const {user} = props
+    const navigate = useNavigate();
     return (
         <div style={{
             fontSize: 16,
             lineHeight: "1.5",
-            width: '100%',
+            width: '100%'
         }}>
             <Flex
                 style={{
@@ -29,11 +24,33 @@ const AppHeader = () => {
                     boxSizing: 'border-box',
                     marginLeft: 'auto',
                     marginRight: 'auto',
-                    maxWidth: 1300
+                    maxWidth: 1300,
+                    justifyContent: 'space-between'
                 }}>
                 <Image src={'../../../logo/logo_header.svg'} style={{width: 98, display: 'flex'}}/>
+                {user ?
+                    <>
+                            <Button
+                                radius="md"
+                                size={'lg'}
+                                style={{
+                                    backgroundColor: '#f4b940',
+                                    fontWeight: 400
+                                }}
+                                onClick={() => {
+                                    logOut()
+                                        .then(() => navigate(LinkTo.AUTHORIZATION()));
+                                }}
+                            >
+                                ВЫЙТИ
+                            </Button>
+                    </>
+                    :
+                    <></>
+                }
                 {/*<Flex>Биллинг</Flex>*/}
             </Flex>
+
             <Flex style={{position: 'relative'}}>
                 <div style={{
                     height: 25,

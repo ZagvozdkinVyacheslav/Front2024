@@ -5,6 +5,10 @@ import AccessDenied from "../pages/AccessDenied";
 import App from "../App.tsx";
 import {roles} from "../utils/roles.ts";
 import NotFound from "../pages/NotFound";
+import Clients from "../pages/Clients";
+import Operations from "../pages/Operations";
+import Operators from "../pages/Operators";
+import Tariffs from "../pages/Tariffs";
 
 export const routes = [
     {
@@ -14,6 +18,10 @@ export const routes = [
             {
                 path: LinkTo.AUTHORIZATION(),
                 element: <Authorization/>,
+            },
+            {
+                path: "*",
+                element: <NotFound/>,
                 authority: [
                     {
                         id: roles.ADMIN.id,
@@ -26,8 +34,52 @@ export const routes = [
                 ],
             },
             {
-                path: "*",
-                element: <NotFound/>
+                path: LinkTo.CLIENTS(),
+                element: <Clients/>,
+                authority: [
+                    {
+                        id: roles.ADMIN.id,
+                        edit: true
+                    },
+                    {
+                        id: roles.MODIFIER.id,
+                        edit: true
+                    }
+                ],
+            },
+            {
+                path: LinkTo.OPERATIONS(),
+                element: <Operations/>,
+                authority: [
+                    {
+                        id: roles.ADMIN.id,
+                        edit: true
+                    },
+                    {
+                        id: roles.MODIFIER.id,
+                        edit: true
+                    }
+                ],
+            },
+            {
+                path: LinkTo.TARIFFS(),
+                element: <Tariffs/>,
+                authority: [
+                    {
+                        id: roles.ADMIN.id,
+                        edit: true
+                    },
+                ],
+            },
+            {
+                path: LinkTo.OPERATORS(),
+                element: <Operators/>,
+                authority: [
+                    {
+                        id: roles.ADMIN.id,
+                        edit: true
+                    },
+                ],
             },
             {
                 path: LinkTo.ACCESS_DENIED(),

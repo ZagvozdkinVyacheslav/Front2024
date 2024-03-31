@@ -1,7 +1,7 @@
-
 import {useQuery} from "@tanstack/react-query";
 import {restApiDomen} from "../config/envs.ts";
 import {OperatorServiceApi} from "./OperatorService.ts";
+import {notifications} from "@mantine/notifications";
 
 export const currUserKeys = {
     curr: ['currentUser'] as const,
@@ -9,7 +9,7 @@ export const currUserKeys = {
 }
 
 export async function logIn(login: string, password: string) {
-    const res = await window.fetch(`${restApiDomen}/logIn?login=${login}&password=${password}`, {
+    await window.fetch(`${restApiDomen}/logIn?login=${login}&password=${password}`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -19,18 +19,31 @@ export async function logIn(login: string, password: string) {
             const auth = new AuthService();
             auth.setOperatorId(value1['operatorId'])
             auth.setToken(value1['token'])
-        }));
+            return true;
+        }))
+        .catch(() => {
+            notifications.show({
+                title: 'Ошибка авторизации',
+                message: 'Неверные логин или пароль',
+                color: 'red'
+            })
+        });
 }
 
 export async function logOut() {
-    const res = await window.fetch(`${restApiDomen}/logOut`, {
-        mode: 'no-cors',
+    const auth = new AuthService();
+    console.log('token for logout = ', auth.getToken())
+    await window.fetch(`${restApiDomen}/logOut`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
+            "Authorization": auth.getToken() ? `Bearer ${auth.getToken()}` : ''
         },
-    });
-    console.log(res);
+    })
+        .finally(() => {
+            auth.setToken('')
+            auth.setOperatorId('')
+        });
 }
 
 export const useCurrentUser = () => {
