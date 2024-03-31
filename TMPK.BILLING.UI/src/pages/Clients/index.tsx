@@ -1,5 +1,5 @@
-import {useEffect, useRef, useState} from 'react';
-import {Button, Container, Space} from "@mantine/core";
+import {useEffect, useState} from 'react';
+import {Button, Space} from "@mantine/core";
 import {ClientServiceApi, IClient} from "../../service/ClientServiceApi.ts";
 import {AuthService} from "../../service/AuthService.ts";
 import {clientColumns} from "./columns.tsx";
@@ -52,7 +52,6 @@ const Clients = () => {
                         enableDensityToggle
                         enableColumnResizing
                         enableGlobalFilter={true}
-                        enable
                     />
                 </>
                 :

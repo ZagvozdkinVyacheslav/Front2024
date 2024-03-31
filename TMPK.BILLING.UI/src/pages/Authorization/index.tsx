@@ -1,7 +1,7 @@
 import {useForm} from "@mantine/form";
 import {Button, Container, Input, PasswordInput} from "@mantine/core";
 import {logIn, logOut} from "../../service/AuthService.ts";
-import {useEffect, useLayoutEffect, useState} from "react";
+import {useLayoutEffect, useState} from "react";
 import {IOperator, OperatorServiceApi} from "../../service/OperatorService.ts";
 import {notifications} from "@mantine/notifications";
 import {useNavigate} from "react-router-dom";

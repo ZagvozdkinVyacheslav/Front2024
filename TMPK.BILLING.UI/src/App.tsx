@@ -1,6 +1,6 @@
 import AppHeader from "./components/AppHeader";
-import {AppShell, Group, Menu, SegmentedControl} from "@mantine/core";
-import {Link, Route, Routes, useLocation, useNavigate} from "react-router-dom";
+import {AppShell, Group, SegmentedControl} from "@mantine/core";
+import {Route, Routes, useLocation, useNavigate} from "react-router-dom";
 import {routes} from "./config/routes.tsx";
 import AppFooter from "./components/AppFooter";
 import {AuthService} from "./service/AuthService.ts";
@@ -13,9 +13,7 @@ function App() {
     const token = auth.getToken()
     const navigate = useNavigate()
     const location = useLocation();
-    
-    const [refetch, setRefetch] = useState(false)
-    useEffect(() => console.log('refetch'), [refetch])
+
     const [user, setUser] = useState<IOperator | null>(null);
 
     console.log('token in app = ', token)

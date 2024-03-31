@@ -553,6 +553,13 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@mantine/dates@^7.7.1":
+  version "7.7.1"
+  resolved "https://registry.yarnpkg.com/@mantine/dates/-/dates-7.7.1.tgz#3bdd223ab27a4eb1b3e50f885773010d515a4a43"
+  integrity sha512-SIeC11HUTiMAExlReFYHXSkTaVjkk1i7+QvLtxJkd3lxn6X1vHuPVV4j4c9AED8oZI5QEmoVcYc/03Eud2FoAg==
+  dependencies:
+    clsx "2.1.0"
+
 "@mui/base@5.0.0-beta.40", "@mui/base@^5.0.0-beta.40":
   version "5.0.0-beta.40"
   resolved "https://registry.yarnpkg.com/@mui/base/-/base-5.0.0-beta.40.tgz#1f8a782f1fbf3f84a961e954c8176b187de3dae2"
@@ -1094,7 +1101,7 @@ chalk@^4.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-clsx@^2.1.0:
+clsx@2.1.0, clsx@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/clsx/-/clsx-2.1.0.tgz#e851283bcb5c80ee7608db18487433f7b23f77cb"
   integrity sha512-m3iNNWpd9rl3jvvcBnu70ylMdrXt8Vlq4HYadnU5fwcOtvkSQWPmj7amUcDT2qYI7risszBjI5AUIUox9D16pg==
